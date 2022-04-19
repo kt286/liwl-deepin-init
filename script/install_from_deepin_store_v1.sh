@@ -60,7 +60,7 @@ install_edge(){
 install_vscode(){
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt -y update
-    #sudo apt -y install microsoft-edge-stable
+    sudo apt -y install code
 }
 
 install_nutstore(){
@@ -71,7 +71,7 @@ install_nutstore(){
         sudo dpkg -i  nautilus_nutstore_amd64.deb
     fi
     rm -rf nautilus_nutstore_amd64.deb
-    cp ${CONFIG_DIR}/nutstore/nutstore-pydaemon.py /home/${ME}/.nutstore/dist/bin/
+    #cp ${CONFIG_DIR}/nutstore/nutstore-pydaemon.py /home/${ME}/.nutstore/dist/bin/ #用修改过得nutstore-pydaemon.py代替原来的，主要用在自定义同步目录后，home目录下会有NutStore Files目录的问题
 }
 install_wiznote(){
     curl -O https://get.wiz.cn/x/wiznote-desktop-${WIZNOTE_VERSION}-linux-x86_64.AppImage 
@@ -90,18 +90,20 @@ install_wiznote(){
 install_baidunetdisk(){
     sudo apt -y install com.baidu.baidunetdisk=4.3.0
     sudo ln -fs /opt/apps/com.baidu.baidunetdisk/entries/applications/com.baidu.baidunetdisk.desktop /usr/share/applications/com.baidu.baidunetdisk.desktop
+    #删除文件管理器显示百度网盘入口
+    sudo rm -rf /usr/share/dde-file-manager/extensions/appEntry/com.baidu.baidunetdiskv_uos.desktop
 }
 
 app_list=(
-    "Edge浏览器":"install_edge"
+    #"Edge浏览器":"install_edge"
     "微信":"install_wechat"
-    "WPS办公软件":"install_wps"
-    "网易云音乐":"install_neteasy_cloud_music"
-    "Typora编辑器":"install_typora"
+    #"WPS办公软件":"install_wps"
+    #"网易云音乐":"install_neteasy_cloud_music"
+    #"Typora编辑器":"install_typora"
     #"vscode编辑器":"install_vscode"
-    "为知笔记":"install_wiznote"
-    "坚果云":"install_nutstore"
-    "百度网盘":"install_baidunetdisk"
+    #"为知笔记":"install_wiznote"
+    #"坚果云":"install_nutstore"
+    #"百度网盘":"install_baidunetdisk"
     #"kvm虚拟化环境":"install_kvm"
     #"docker容器环境":"install_docker"
     #"nodejs环境":"install_node"
