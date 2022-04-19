@@ -57,5 +57,5 @@ if __name__ == "__main__":
         run()
     else:
         run(sys.argv[1])
-    execute_local_command("sudo apt autoremove >/dev/null")
+    execute_local_command("sudo apt -y autoremove >/dev/null")
     execute_local_command("sudo reboot")
