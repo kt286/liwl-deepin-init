@@ -25,7 +25,6 @@ action_list=(
     "删除不需要的图片":"rm_picture"
     "配置vimrc":"modify_vimrc 配置目录"
     "配置bashrc":"modify_bashrc 配置目录"
-    "配置全局快捷键":"modify_global_shortcut 配置目录"
 )
 
 script_info(){
@@ -37,7 +36,6 @@ $0 -d #删除多余图片
 $0 -e #配置vimrc
 $0 -f #配置bashrc
 $0 -g #配置无密码sudo
-$0 -h #配置全局快捷键
 "
 }
 
@@ -91,11 +89,6 @@ modify_nopassword(){
     sudo usermod -a -G sudo ${ME}
 }
 
-#配置全局快捷键。系统存在的会冲突，需要研究如何通过dbus[d-feet]设置.
-modify_global_shortcut(){
-    mkdir -p /home/${ME}/.config/deepin/dde-daemon/keybinding/
-    cp ${DIR}/global-shortcut/custom.ini /home/${ME}/.config/deepin/dde-daemon/keybinding/
-}
 
 OPT=$1
 case ${OPT} in
@@ -119,9 +112,6 @@ case ${OPT} in
         ;;
     -g)
         modify_nopassword $2
-        ;;
-    -h)
-        modify_global_shortcut $2
         ;;
     *)
         script_info
