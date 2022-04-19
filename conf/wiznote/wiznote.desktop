@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=为知笔记
+Type=Application
+Icon=/home/liwl/.icons/wiznote.png
+Encoding=utf-8
+Exec=/opt/apps/cn.wiz/wiznote.AppImage
+Terminal=false

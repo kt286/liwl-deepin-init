@@ -1,0 +1,95 @@
+syntax on
+set nocompatible
+set backspace=indent,eol,start
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+""set laststatus=2
+"" 符号补全
+inoremap ( ()<ESC>i
+inoremap { {}<ESC>i
+""inoremap < <><ESC>i
+inoremap ` ``<ESC>i
+inoremap ' ''<ESC>i
+inoremap " ""<ESC>i
+inoremap [ []<ESC>i
+""inoremap * **<ESC>i
+iab mliwl <c-r>=strftime("common by liwl,%Y-%m-%d %H:%M:%S")<cr>
+
+"" 自定义补全
+""inoremap __n __name__ == "__main__":<ESC>o<TAB>pass<ESC>o
+"inoremap pc printf(); <ESC>2hi
+"inoremap sc scanf(); <ESC>2hi
+"" 显示匹配括号
+set showmatch
+"" 不折叠
+set nowrap
+
+"" C语言样式缩进
+"set cindent
+"set smartindent
+"" 插入python文件对应模板
+function AddFileInformation_py()
+      let infor = "#!/usr/bin/env python3\n"
+      \."# -*- coding:utf-8 -*-\n"
+      \."# ***************************************************************************\n"
+      \."# * \n"
+      \."# * @file:".expand("%")." \n"
+      \."# * @author:liwwanliang \n"
+      \."# * @date:".strftime("%Y-%m-%d %H:%M")." \n"
+      \."# * @version 1.0  \n"
+      \."# * @description: Python Script \n"
+      \."# * @Copyright (c)  all right reserved \n"
+      \."# * \n"
+      \."# ***************************************************************************\n"
+	  \."\n"
+	  \."\n"
+	  \."\n"
+	  \."if __name__ == \"__main__\":\n"
+	  \."    pass"
+      silent  put! =infor
+endfunction
+
+autocmd BufNewFile *.py call AddFileInformation_py()
+"" 插入shell文件对应模板
+function AddFileInformation_sh()
+      let infor = "#!/bin/bash\n"
+      \."# ***************************************************************************\n"
+      \."# * \n"
+      \."# * @file:".expand("%")." \n"
+      \."# * @author:liwanliang \n"
+      \."# * @date:".strftime("%Y-%m-%d %H:%M")." \n"
+      \."# * @version 1.0  \n"
+      \."# * @description: Shell script \n"
+      \."# * @Copyright (c)  all right reserved \n"
+      \."# * \n"
+      \."#**************************************************************************/ \n"
+	  \."function main(){ \n"
+	  \."}"
+      silent  put! =infor
+endfunction
+autocmd BufNewFile *.sh call AddFileInformation_sh()
+
+"" 插入c文件对应模板
+function AddFileInformation_c()
+      let infor ="\/*"
+	  \."******************************************************************************\n"
+      \." * @file:".expand("%")." \n"
+      \." * @author:liwanliang \n"
+      \." * @date:".strftime("%Y-%m-%d %H:%M")." \n"
+      \." * @version 1.0  \n"
+      \." * @description: C source file \n"
+      \." * @Copyright (c)  all right reserved \n"
+      \." * \n"
+	  \."******************************************************************************\/\n"
+	  \. "#include <stdio.h>\n"
+	  \."int main(int argc, char *argv){\n    return 0;\n}"
+      silent  put! =infor
+endfunction
+autocmd BufNewFile *.c call AddFileInformation_c()
+
+"禁用选中后进入可视化"
+if has('mouse')
+    set mouse-=a
+endif
