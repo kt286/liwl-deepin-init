@@ -1,7 +1,6 @@
 #!/bin/bash
 # 本脚本用于一健更换壁纸，背景图片，用户图像
 
-IFS=','
 #获取当前用户
 ME=$(whoami)
 #保留的主题bloom
@@ -22,17 +21,14 @@ modify_desktop(){
 
 # 修改背景图片
 modify_background(){
-    DIR=/var/cache/deepin/dde-daemon/image-effect/pixmix
     sudo cp ${PICTURE_DIR}/background.jpg /usr/share/wallpapers/deepin/desktop.jpg
     sudo cp ${PICTURE_DIR}/background.jpg /usr/share/backgrounds/default_background.jpg
     sudo ln -fs /usr/share/wallpapers/deepin/desktop.jpg /etc/alternatives/deepin-default-background
-    sudo cp ${PICTURE_DIR}/background.jpg ${DIR}
-    cd /var/cache/deepin/dde-daemon/image-effect/pixmix
-    for img in $(ls ${DIR}|egrep -v background.jpg)
+    for img in $(ls /var/cache/deepin/dde-daemon/image-effect/pixmix/)
     do
-	sudo cp ${DIR}/background.jpg ${DIR}/${img} && sudo chmod 600 ${DIR}/${img} && sudo chattr +i ${DIR}/${img}
+        sudo cp ${PICTURE_DIR}/background.jpg /var/cache/deepin/dde-daemon/image-effect/pixmix/${img}
+        sudo chmod 600 /var/cache/deepin/dde-daemon/image-effect/pixmix/${img}
     done
-    cd -
 }
 
 # 修改用户图像
