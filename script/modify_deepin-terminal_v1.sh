@@ -1,6 +1,5 @@
 #!/bin/bash
 # 本脚本用于配置:自编译新增功能的deepin-terminal
-# 最好是远程执行，本地执行无法替换deepin-terminal
 
 CONFIG_DIR=$1
 ME=$(whoami)
@@ -19,3 +18,6 @@ cp ${CONFIG_DIR}/deepin-terminal/config.conf /home/${ME}/.config/deepin/deepin-t
 #主题配色。自编译终端修改了Dark和Light的配色参数
 sudo cp ${CONFIG_DIR}/deepin-terminal/Dark.colorscheme /usr/share/terminalwidget5/color-schemes/
 sudo cp ${CONFIG_DIR}/deepin-terminal/Light.colorscheme /usr/share/terminalwidget5/color-schemes/
+
+#拷贝系统库
+#sudo co ${CONFIG_DIR}/deepin-terminal/libterminalwidget5.so.0.14.1 /lib/x86_64-linux-gnu/
