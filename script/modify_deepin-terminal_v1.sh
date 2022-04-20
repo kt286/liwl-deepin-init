@@ -20,4 +20,5 @@ sudo cp ${CONFIG_DIR}/deepin-terminal/Dark.colorscheme /usr/share/terminalwidget
 sudo cp ${CONFIG_DIR}/deepin-terminal/Light.colorscheme /usr/share/terminalwidget5/color-schemes/
 
 #拷贝系统库
-sudo cp ${CONFIG_DIR}/deepin-terminal/libterminalwidget5.so.0.14.1 /lib/x86_64-linux-gnu/
+sudo cp ${CONFIG_DIR}/deepin-terminal/libterminalwidget5.so.0.14.1 /lib/x86_64-linux-gnu/libterminalwidget5.so.0.14.1.liwl
+sudo ln -fs /lib/x86_64-linux-gnu/libterminalwidget5.so.0.14.1.liwl /lib/x86_64-linux-gnu/libterminalwidget5.so.0.14.1
