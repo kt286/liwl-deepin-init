@@ -27,6 +27,7 @@ action_list = [
         {'安装自编译终端':"modify_deepin-terminal_v1.sh %s" % CONF_DIR},
         {'配置vimrc':"my_subsequent_command_v1.sh -e %s" % CONF_DIR},
         {'配置bashrc':"my_subsequent_command_v1.sh -f %s" % CONF_DIR},
+        {'配置文件管理器':"modify_dde-file-manager_v1.sh %s" CONF_DIR},
         {'配置全局快捷键':"modify_globle_shortcut_v1.sh"},
         {'修改启动界面':"modify_grub_v1.sh"},
 ]
