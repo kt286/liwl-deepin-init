@@ -1,0 +1,8 @@
+{
+    "GenericAttribute": {
+        "HiddenSystemPartition": true,
+        "IndexFullTextSearch": true,
+        "ShowFileSystemTagOnDiskIcon": true,
+        "ShowRecentFileEntry": false
+    }
+}
