@@ -3,4 +3,4 @@
 
 CONFIG_DIR=$1
 ME=$(whoami)
-cp ${CONFIG_DIR}/dde-file-manager /home/${ME}/.config/deepin/
+cp ${CONFIG_DIR}/dde-file-manager/dde-file-manager.json /home/${ME}/.config/deepin/
