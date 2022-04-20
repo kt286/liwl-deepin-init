@@ -94,6 +94,12 @@ install_baidunetdisk(){
     sudo rm -rf /usr/share/dde-file-manager/extensions/appEntry/com.baidu.baidunetdiskv_uos.desktop
 }
 
+install_dtk(){
+    sudo apt -y install qt5-default qtcreator cmake g++ git
+    sudo apt -y install libdtkwidget-dev libdtkgui-dev libdtkcore-dev
+    sudo apt -y install deepin-sdk qtcreator-template-dtk
+}
+
 app_list=(
     "Edge浏览器":"install_edge"
     #"微信":"install_wechat"
@@ -107,6 +113,7 @@ app_list=(
     #"kvm虚拟化环境":"install_kvm"
     #"docker容器环境":"install_docker"
     #"nodejs环境":"install_node"
+    #"dtk开发环境":"install_dtk"
 )
 
 ask_for_app(){
