@@ -12,4 +12,4 @@ gsettings set com.deepin.dde.keybinding.system terminal "['<Super>2']" #控制�
 
 #设置Alt+w打开微信wechat
 busctl --user call com.deepin.daemon.Keybinding /com/deepin/daemon/Keybinding com.deepin.daemon.Keybinding AddCustomShortcut sss "wechat" "/opt/deepinwine/tools/sendkeys.sh w WeChat
-" "<Alt>w"
+" "<Alt>W"

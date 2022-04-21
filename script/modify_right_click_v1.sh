@@ -21,7 +21,31 @@ create_markdown(){
 }
 
 send_to_cnblogs(){
-    echo ""
+    if [ ! -f /usr/share/deepin/dde-file-manager/oem-menuextensions/deepin_share_markdown_to.desktop ]
+    then
+        sudo touch /usr/share/deepin/dde-file-manager/oem-menuextensions/deepin_share_markdown_to.desktop
+    fi
+    sudo sh -c '
+    echo """
+    [Desktop Entry]
+    Type=Application
+    Name=发布文档到
+    Actions=SendTocnblogs;SendTowiznote
+    X-DFM-MenuTypes=SingleFile
+    MimeType=text/markdown
+
+    [Desktop Action SendTocnblogs]
+    Name=博客园
+    Exec=python3 /home/liwl/.liwl/deepin/dde-file-manager/cnblogs.com/publish.py --file %U
+    Icon=send-to
+
+    [Desktop Action SendTowiznote]
+    Name=为知笔记
+    Exec=nodejs /home/liwl/.liwl/deepin/dde-file-manager/wiz.cn/publish.js --file %U
+    Icon=send-to
+    """ > /usr/share/deepin/dde-file-manager/oem-menuextensions/deepin_share_markdown_to.desktop
+    '
+    sudo sh -c "sed -ri 's/^\s*//g' /usr/share/deepin/dde-file-manager/oem-menuextensions/deepin_share_markdown_to.desktop"
 }
 
 send_to_wiznote(){
