@@ -64,6 +64,8 @@ rmdir_theme(){
     do
         sudo rm -rf /usr/share/icons/${theme}
     done
+    #补充因为删除图片导致的卸载软件时顶兰通知icon丢失
+    cp ${DIR}/deepin-appstore.svg /usr/share/icons/bloom/apps/48/deepin-appstore.svg
 }
 
 
