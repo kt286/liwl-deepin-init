@@ -16,9 +16,6 @@ FCITX5_DICT_DIR=${FCITX5_DIR}/dictionaries
 FCITX5_THEME_DIR=${FCITX5_DIR}/theme/meterial
 FCITX5_MISC_DIR=${FCITX5_DIR}/misc
 
-#获取当前用户
-ME=$(whoami)
-
 #卸载fcitx，安装fcitx5
 install_fcitx5(){
     sudo apt -y purge fcitx*
@@ -32,8 +29,8 @@ cp_config(){
         echo "没有${FCITX5_CONF_DIR}目录"
         exit 0
     fi
-    rm -rf /home/${ME}/.config/fcitx5/* && mkdir -p /home/${ME}/.config/fcitx5/
-    cp -r ${FCITX5_CONF_DIR}/*  /home/${ME}/.config/fcitx5/
+    rm -rf /home/${USER}/.config/fcitx5/* && mkdir -p /home/${USER}/.config/fcitx5/
+    cp -r ${FCITX5_CONF_DIR}/*  /home/${USER}/.config/fcitx5/
 }
 
 #更换主题
@@ -63,8 +60,8 @@ modify_dict(){
         echo "没有${FCITX5_DICT_DIR}目录"
         exit 0
     fi
-    mkdir -p /home/${ME}/.local/share/fcitx5/pinyin/dictionaries/
-    cp -r ${FCITX5_DICT_DIR}/*         /home/${ME}/.local/share/fcitx5/pinyin/dictionaries/
+    mkdir -p /home/${USER}/.local/share/fcitx5/pinyin/dictionaries/
+    cp -r ${FCITX5_DICT_DIR}/*         /home/${USER}/.local/share/fcitx5/pinyin/dictionaries/
 }
 
 #隐藏启动器fcitx5的相关图标

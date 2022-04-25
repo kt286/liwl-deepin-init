@@ -1,7 +1,6 @@
 #!/bin/bash
 # 本脚本主要负责执行后续一些清理或者配置工具
 
-ME=$(whoami)
 DIR=$2
 
 #需要保留的主题，在行前使用#注释
@@ -46,7 +45,7 @@ install_fonts(){
         echo "指定的不是字体目录"
         exit 0
     fi
-    cp -r ${DIR}/* /home/${ME}/.local/share/
+    cp -r ${DIR}/* /home/${USER}/.local/share/
     sudo cp  -r ${DIR}/* /usr/share/fonts/
 }
 
@@ -77,18 +76,18 @@ rm_picture(){
 
 #配置vimrc
 modify_vimrc(){
-    cp ${DIR}/vim/vimrc /home/${ME}/.vimrc
+    cp ${DIR}/vim/vimrc /home/${USER}/.vimrc
 }
 
 #配置bashrc
 modify_bashrc(){
-    cp ${DIR}/bash/bashrc /home/${ME}/.bashrc
+    cp ${DIR}/bash/bashrc /home/${USER}/.bashrc
 }
 
 #配置当前用户无密码执行sudo
 modify_nopassword(){
     sudo cp ${DIR}/sudo/sudoers /etc/sudoers
-    sudo usermod -a -G sudo ${ME}
+    sudo usermod -a -G sudo ${USER}
 }
 
 

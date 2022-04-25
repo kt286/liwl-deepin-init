@@ -2,7 +2,6 @@
 # 在app_list里面
 
 IFS=","
-ME=$(whoami)
 
 WIZNOTE_VERSION="0.1.73"
 PICTURE_DIR=$2
@@ -16,7 +15,7 @@ install_wechat(){
 
 install_wps(){
     sudo apt -y install cn.wps.wps-office
-    rm -rf /home/${ME}/.Templates/*
+    rm -rf /home/${USER}/.Templates/*
 }
 
 install_neteasy_cloud_music(){
@@ -71,7 +70,7 @@ install_nutstore(){
         sudo dpkg -i  nautilus_nutstore_amd64.deb
     fi
     rm -rf nautilus_nutstore_amd64.deb
-    #cp ${CONFIG_DIR}/nutstore/nutstore-pydaemon.py /home/${ME}/.nutstore/dist/bin/ #用修改过得nutstore-pydaemon.py代替原来的，主要用在自定义同步目录后，home目录下会有NutStore Files目录的问题
+    #cp ${CONFIG_DIR}/nutstore/nutstore-pydaemon.py /home/${USER}/.nutstore/dist/bin/ #用修改过得nutstore-pydaemon.py代替原来的，主要用在自定义同步目录后，home目录下会有NutStore Files目录的问题
 }
 install_wiznote(){
     curl -O https://get.wiz.cn/x/wiznote-desktop-${WIZNOTE_VERSION}-linux-x86_64.AppImage 
@@ -80,7 +79,7 @@ install_wiznote(){
         sudo mkdir -p /opt/apps/cn.wiz
         sudo cp wiznote-desktop-${WIZNOTE_VERSION}-linux-x86_64.AppImage /opt/apps/cn.wiz/wiznote.AppImage
         sudo chmod +x /opt/apps/cn.wiz/wiznote.AppImage
-        cp ${CONFIG_DIR}/wiznote/wiznote.png  /home/${ME}/.icons/
+        cp ${CONFIG_DIR}/wiznote/wiznote.png  /home/${USER}/.icons/
         sudo cp ${CONFIG_DIR}/wiznote/wiznote.desktop /usr/share/applications/
         rm -rf wiznote-desktop-${WIZNOTE_VERSION}-linux-x86_64.AppImage
     else
