@@ -24,6 +24,7 @@ action_list=(
     "删除不需要的图片":"rm_picture"
     "配置vimrc":"modify_vimrc 配置目录"
     "配置bashrc":"modify_bashrc 配置目录"
+    "配置文件管理器":"modify_dde-file-manager"
 )
 
 script_info(){

@@ -12,7 +12,9 @@ script_info(){
     exit 0
 }
 
+#picture_list数组,也可以在行首通过#注释掉
 picture_list=(
+    #"图像":"更换图像的操作函数名"
     "用户图像":"modify_account_icon"
     "桌面壁纸":"modify_desktop"
     "背景图片":"modify_background"
@@ -31,8 +33,15 @@ function modify_account(){
     echo "更换用户图像为:${account_icon}"
     #更换操作
     sudo rm -rf /var/lib/AccountsService/icons/*.png
+    a=$?
     sudo rm -rf /var/lib/AccountsService/icons/bigger/*.png
+    b=$?
     sudo cp ${account_icon} /var/lib/AccountsService/icons/1.png
+    c=$?
+    if [ "${a}" -ne 0 ] || [ "${b}" -ne 0 ] || [ "${c}" -ne 0 ]
+    then
+        exit -1
+    fi
 }
 
 #更换桌面壁纸
@@ -46,7 +55,6 @@ function modify_desktop(){
     echo "更换桌面壁纸中..."
     cp ${desktop_pic} /home/${USER}/.config/deepin/dde-daemon/appearance/custom-wallpapers/
     scree=$(xrandr|egrep "connected primary"|awk '{print $1}') 
-    echo ${scree}
     dbus-send \
     --dest=com.deepin.daemon.Appearance /com/deepin/daemon/Appearance  \
     --print-reply com.deepin.daemon.Appearance.SetMonitorBackground \
