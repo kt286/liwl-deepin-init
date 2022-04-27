@@ -2,7 +2,6 @@
 # 卸载deepin自带应用
 
 IFS=','
-ME=$(whoami)
 deepin_apps=(
     #行首使用'#'注释不需要卸载的应用即可
     "浏览器":"org.deepin.browser"
@@ -77,4 +76,4 @@ ask_for_app(){
 sudo apt >/dev/null #首先输入sudo密码
 ask_for_app $1
 #删除icon残留。不进行这一步，全屏启动器会保留卸载应用的icon
-rm -rf /home/${ME}/.config/deepin/dde-launcher-app-*
+rm -rf /home/${USER}/.config/deepin/dde-launcher-app-*
