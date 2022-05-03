@@ -45,8 +45,10 @@ install_node(){
 
 install_typora(){
     sudo apt -y install io.typora
-    #修复安装typora无icon和icon无图像的问题
+    #修复卸载deepin-app-store安装typora无icon和icon无图像的问题
     #sudo cp ${PICTURE_DIR}/typora.png /usr/share/icons/hicolor/64x64/apps/
+    #修复不卸载deepin-app-store安装时，无icon问题
+    sudo sed -i 's/Icon=typora/Icon=io.typora.png/g' /usr/share/applications/io.typora.desktop
 }
 
 install_edge(){
