@@ -1,5 +1,8 @@
 #!/bin/bash
 # 卸载deepin自带应用
+# 2022/05/30: 
+#   卸载deepin-client-id时会把deepin-app-store卸载
+#   修改默认卸载,不卸载deepin-client-id和deepin-app-store
 
 IFS=','
 deepin_apps=(
@@ -19,7 +22,7 @@ deepin_apps=(
     "文档查看器":"deepin-reader"
     "语音记事本":"deepin-voice-note"
     "打印机管理":"dde-printer"
-    "画图":"deepin-draw"
+    "画板":"deepin-draw"
     "相册":"deepin-album"
     "音乐":"deepin-music"
     "邮箱":"deepin-mail"
@@ -30,14 +33,14 @@ deepin_apps=(
     "屏保":"deepin-screensaver"
     "壁纸":"deepin-wallpapers"
     "快捷键预览":"deepin-shortcut-viewer"
-    "全局检索":"dde-grand-search"
-    "应用商店":"deepin-app-store"
+    "全局搜索":"dde-grand-search"
+    #"应用商店":"deepin-app-store"
     "扫描易":"simple-scan"
     "LibreOffice办公":"LibreOffice*"
     "连连看":"com.deepin.lianliankan"
     "五子棋":"com.deepin.gomoku"
     "社区论坛":"deepin-forum"
-    "深度ID":"deepin-deepinid-client"
+    #"深度ID":"deepin-deepinid-client"
     "备份恢复":"deepin-recovery-plugin deepin-ab-recovery"
     "nano编辑器":"nano"
     #"截图录屏":"deepin-screen-recorder"

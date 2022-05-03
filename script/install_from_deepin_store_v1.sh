@@ -1,5 +1,6 @@
 #!/bin/bash
 # 在app_list里面
+# 2022/05/03，调整默认卸载不再下载deepin-app-store后,本脚本内部的ln命令修复快捷方式不再需要
 
 IFS=","
 
@@ -10,7 +11,7 @@ CONFIG_DIR=$4
 
 install_wechat(){
     sudo apt -y install com.qq.weixin.deepin
-    sudo ln -fs /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop   /usr/share/applications/com.qq.weixin.deepin.desktop
+    #sudo ln -fs /opt/apps/com.qq.weixin.deepin/entries/applications/com.qq.weixin.deepin.desktop   /usr/share/applications/com.qq.weixin.deepin.desktop
 }
 
 install_wps(){
@@ -20,7 +21,7 @@ install_wps(){
 
 install_neteasy_cloud_music(){
     sudo apt -y install com.163.music
-    sudo ln -fs /opt/apps/com.163.music/entries/applications/com.163.music.desktop      /usr/share/applications/com.163.music.desktop
+    #sudo ln -fs /opt/apps/com.163.music/entries/applications/com.163.music.desktop      /usr/share/applications/com.163.music.desktop
     #这里需要添加对高分屏幕的判断，如果是高分屏幕，根据系统缩放比，为网易云音乐创建缩放比的desktop
     scale=$(gsettings get com.deepin.xsettings scale-factor)
     if [ "${scale}" != "1.0" ]
@@ -44,9 +45,8 @@ install_node(){
 
 install_typora(){
     sudo apt -y install io.typora
-    sudo ln -fs /opt/apps/io.typora/entries/applications/io.typora.desktop /usr/share/applications/io.typora.desktop
     #修复安装typora无icon和icon无图像的问题
-    sudo cp ${PICTURE_DIR}/typora.png /usr/share/icons/hicolor/64x64/apps/
+    #sudo cp ${PICTURE_DIR}/typora.png /usr/share/icons/hicolor/64x64/apps/
 }
 
 install_edge(){
@@ -88,15 +88,13 @@ install_wiznote(){
 }
 install_baidunetdisk(){
     sudo apt -y install com.baidu.baidunetdisk=4.3.0
-    sudo ln -fs /opt/apps/com.baidu.baidunetdisk/entries/applications/com.baidu.baidunetdisk.desktop /usr/share/applications/com.baidu.baidunetdisk.desktop
+    #sudo ln -fs /opt/apps/com.baidu.baidunetdisk/entries/applications/com.baidu.baidunetdisk.desktop /usr/share/applications/com.baidu.baidunetdisk.desktop
     #删除文件管理器显示百度网盘入口
     sudo rm -rf /usr/share/dde-file-manager/extensions/appEntry/com.baidu.baidunetdiskv_uos.desktop
 }
 
 install_dtk(){
-    sudo apt -y install qt5-default qtcreator cmake g++ git
-    sudo apt -y install libdtkwidget-dev libdtkgui-dev libdtkcore-dev
-    sudo apt -y install deepin-sdk qtcreator-template-dtk
+    sudo apt -y install qt5-default qtcreator cmake g++ git libdtkwidget-dev libdtkgui-dev libdtkcore-dev deepin-sdk qtcreator-template-dtk
 }
 
 app_list=(
