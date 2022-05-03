@@ -101,10 +101,10 @@ install_dtk(){
 
 app_list=(
     "Edge浏览器":"install_edge"
-    #"微信":"install_wechat"
-    #"WPS办公软件":"install_wps"
-    #"网易云音乐":"install_neteasy_cloud_music"
-    #"Typora编辑器":"install_typora"
+    "微信":"install_wechat"
+    "WPS办公软件":"install_wps"
+    "网易云音乐":"install_neteasy_cloud_music"
+    "Typora编辑器":"install_typora"
     #"vscode编辑器":"install_vscode"
     #"为知笔记":"install_wiznote"
     #"坚果云":"install_nutstore"
