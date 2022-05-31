@@ -9,6 +9,7 @@ busctl --user call com.deepin.dde.Dock /com/deepin/dde/Dock com.deepin.dde.Dock 
 busctl --user call com.deepin.dde.Dock /com/deepin/dde/Dock com.deepin.dde.Dock setPluginVisible sb '通知中心' false
 busctl --user call com.deepin.dde.Dock /com/deepin/dde/Dock com.deepin.dde.Dock setPluginVisible sb '多任务视图' false
 busctl --user call com.deepin.dde.Dock /com/deepin/dde/Dock com.deepin.dde.Dock setPluginVisible sb '全局搜索' false
+busctl --user call com.deepin.dde.Dock /com/deepin/dde/Dock com.deepin.dde.Dock setPluginVisible sb '截图录屏' false
 
 ###任务栏
 #任务栏设置为高效模式
